@@ -1,0 +1,8 @@
+- [ ] Replace Formspree endpoint in `/app/page.tsx`
+- [ ] Add `/app/thanks/page.tsx`
+- [ ] Add `/app/manifesto/page.tsx`, `/app/updates/page.tsx`
+- [ ] Add `/app/privacy/page.tsx`, `/app/terms/page.tsx`
+- [ ] Enable Plausible script in `app/layout.tsx`
+- [ ] Install & configure `next-sitemap`; add postbuild script
+- [ ] Verify OG/favicons render; re-scrape social previews
+- [ ] (Optional) Add Framer Motion fade-in on sections

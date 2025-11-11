@@ -1,0 +1,9 @@
+# Project: Exocortex (exocore.cx)
+- English is the primary language; be concise and modern.
+- Keep UI minimal, dark, and fast. No heavy dependencies without need.
+- Tech: Next.js (App Router), TypeScript, CSS in `globals.css`. No Tailwind (unless explicitly added later).
+- Copy tone: confident, practical, human. Avoid hype.
+- Brand: “Exocortex”. “Exocore” refers to the internal engine only.
+- When changing copy, keep headline: “From goals → tasks → agents → results”.
+- Prefer accessible HTML (aria labels, proper landmarks).
+- Keep image assets in `/public`. OG: `/og.png`. Icons: `/favicon.ico`, `/apple-touch-icon.png`.

@@ -1,0 +1,4 @@
+{ "redirects": [
+    { "source": "/(.*)", "has":[{"type":"host","value":"www.exocore.cx"}],
+      "destination": "https://exocore.cx/$1", "permanent": true }
+  ]}
