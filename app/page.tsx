@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export default function Page() {
   return (
     <>
       {/* NAV */}
       <nav className="nav">
         <div className="container row">
-          <a className="logo" href="/" aria-label="Exocortex home">Exocortex</a>
+          <Link className="logo" href="/" aria-label="Exocortex home">Exocortex</Link>
           <div className="links">
             <a href="#features">Features</a>
             <a href="#how">How it works</a>
@@ -192,11 +194,27 @@ export default function Page() {
           </p>
           <form
             className="form"
-            action="https://formspree.io/f/your_form_id" // ← replace with your Formspree endpoint
+            action={process.env.NEXT_PUBLIC_FORMSPREE || "https://formspree.io/f/your_form_id"}
             method="POST"
           >
-            <input className="input" name="email" type="email" required placeholder="your@email"/>
-            <input className="input" name="role" placeholder="your role (e.g., ML Engineer / PM)"/>
+            <label htmlFor="email" className="sr-only">Email address</label>
+            <input
+              id="email"
+              className="input"
+              name="email"
+              type="email"
+              required
+              placeholder="your@email"
+              aria-label="Email address"
+            />
+            <label htmlFor="role" className="sr-only">Your role</label>
+            <input
+              id="role"
+              className="input"
+              name="role"
+              placeholder="your role (e.g., ML Engineer / PM)"
+              aria-label="Your role (optional)"
+            />
             <input type="hidden" name="_redirect" value="https://exocore.cx/thanks" />
             <button className="btn" type="submit">Request access</button>
           </form>
@@ -210,9 +228,12 @@ export default function Page() {
       <footer>
         <div className="container" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <div>© {new Date().getFullYear()} Exocore.cx</div>
-          <div style={{ display: "flex", gap: 14 }}>
-            <a href="https://exocore.cx">Home</a>
-            <a href="#roadmap">Roadmap</a>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <Link href="/">Home</Link>
+            <Link href="/manifesto">Manifesto</Link>
+            <Link href="/updates">Updates</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
             <a href="mailto:info@exocore.cx">Contact</a>
           </div>
         </div>

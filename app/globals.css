@@ -88,3 +88,4 @@ input,button{font:inherit}
   padding:12px 14px; border-radius:10px; width:100%
 }
 .form{display:flex; gap:12px; flex-wrap:wrap}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
