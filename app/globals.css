@@ -89,3 +89,47 @@ input,button{font:inherit}
 }
 .form{display:flex; gap:12px; flex-wrap:wrap}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* ===== Diagram (How it works) ===== */
+.diagram-flow{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:18px; }
+.diagram-node{ position:relative; display:flex; align-items:center; gap:12px; padding:12px 14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid var(--border); border-radius:12px; }
+.diagram-node .node-title{ font-weight:700; }
+.diagram-node .node-desc{ opacity:.75; font-size:14px; }
+.diagram-arrow{ margin-left:6px; margin-right:-6px; opacity:.45; font-weight:700; font-size:22px; }
+@media (max-width:520px){ .diagram-node{ flex-direction:column; align-items:flex-start; } .diagram-arrow{ display:none } }
+
+/* ===== Roadmap timeline ===== */
+.timeline{ position:relative; margin-top:18px; }
+.timeline-list{ position:relative; display:grid; gap:18px; grid-template-columns:repeat(4,minmax(0,1fr)); }
+.timeline-list::before{ content:""; position:absolute; left:0; right:0; top:24px; height:2px;
+  background:linear-gradient(90deg, var(--border), #6a6aff); opacity:.35; pointer-events:none; }
+.timeline-item{ padding-top:36px; text-align:center; }
+.timeline-item .dot{ position:absolute; top:14px; left:50%; transform:translateX(-50%);
+  width:12px; height:12px; border-radius:50%; background:#5a5a66; box-shadow:0 0 0 4px rgba(124,124,255,.15); }
+.timeline-caption{ color:var(--muted); font-size:12px; margin-top:8px; text-align:center; }
+.timeline-item.done .dot{ background:#61dafb; }   /* cyan */
+.timeline-item.active .dot{ background:#7c7cff; } /* violet */
+.timeline-item.next .dot{ background:#a1a1ad; }   /* gray */
+.timeline-item.future .dot{ background:#5a5a66; } /* dim */
+@media (max-width:900px){ .timeline-list{ grid-template-columns:1fr; } .timeline-list::before{ display:none; }
+  .timeline-item{ text-align:left; padding-left:14px; } .timeline-item .dot{ left:18px; transform:none; } }
+
+/* ===== Reveal animation (no deps) ===== */
+.reveal-pending{ opacity:0; transform:translateY(8px); transition:opacity .4s ease, transform .4s ease; }
+.reveal-in{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce){ .reveal-pending, .reveal-in{ transition:none; transform:none; opacity:1; } }
+
+/* Rhythm tweaks */
+.section{ padding:64px 0; }
+.hero{ padding:96px 0 48px; }
+
+/* Accordion details */
+.accordion summary { cursor: pointer; list-style: none; }
+.accordion summary::marker, .accordion summary::-webkit-details-marker { display: none; }
+.accordion summary { display:flex; align-items:center; gap:8px; }
+.accordion[open] { border-color:#2a2a36; }
+
+/* Lists inside cards */
+.card ul { margin: 0; }

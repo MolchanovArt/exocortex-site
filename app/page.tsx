@@ -1,6 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import RoadmapTimeline from "./components/RoadmapTimeline";
+import HowDiagram from "./components/HowDiagram";
+import useReveal from "./components/useReveal";
 
 export default function Page() {
+  useReveal();
   return (
     <>
       {/* NAV */}
@@ -78,27 +84,12 @@ export default function Page() {
         <div className="container">
           <h2>How it works</h2>
           <p className="lead">Minimal magic. Maximum transparency.</p>
-          <div
-            className="grid cols-4"
-            style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 18 }}
-          >
-            {[
-              ["Intent detection", "Clarify the objective and the definition of done."],
-              ["Context retriever", "Pull the relevant pieces from your 2nd Brain and the web."],
-              ["Composer-0", "Assemble the best action chain from modules and agents."],
-              ["Execute + Log", "Run steps, log artifacts, collect feedback, adapt the plan."]
-            ].map(([t, d]) => (
-              <div key={t} className="card">
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </div>
-            ))}
-          </div>
+          <HowDiagram />
           <div className="card" style={{ marginTop: 18 }}>
             <div className="kbd">Tip</div>
             <p style={{ marginTop: 6 }}>
-              Exocortex removes friction between thinking and doing: stop hunting for tools —
-              the system picks the right agents and wires them to your context.
+              Exocortex removes friction between thinking and doing: the system picks the right agents
+              and wires them to your context — you keep control over each step.
             </p>
           </div>
         </div>
@@ -160,28 +151,165 @@ export default function Page() {
         </div>
       </section>
 
+      {/* DEEP DIVE */}
+      <section id="deepdive" className="section">
+        <div className="container">
+          <h2>Deep dive</h2>
+          <p className="lead">More context for who it helps and what you actually get.</p>
+          <div className="grid cols-2" style={{marginTop:18}}>
+            <div className="card">
+              <h3>Who it's for</h3>
+              <ul style={{margin:"8px 0 0", paddingLeft:18, lineHeight:1.7, opacity:.9}}>
+                <li>Builders who ship (PMs, ML/AI engineers, indie hackers).</li>
+                <li>People juggling research, writing, planning, and delivery.</li>
+                <li>Teams that want reusable, transparent agent pipelines.</li>
+              </ul>
+            </div>
+            <div className="card">
+              <h3>What you get</h3>
+              <ul style={{margin:"8px 0 0", paddingLeft:18, lineHeight:1.7, opacity:.9}}>
+                <li>Faster path from intent → finished artifact.</li>
+                <li>Memory graph (2nd Brain) so you don't repeat yourself.</li>
+                <li>Calendar-aware "next best action" and clean logs/artifacts.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="card" style={{marginTop:18}}>
+            <h3 style={{marginTop:0}}>Example pipeline: Research → Outline → Draft → Refine</h3>
+            <ol style={{margin:"8px 0 0", paddingLeft:18, lineHeight:1.7, opacity:.9}}>
+              <li><b>Intent</b>: "Write a 1-page brief on X." Definition of done set.</li>
+              <li><b>Context</b>: pull prior notes/sources from 2nd Brain + fresh web cites.</li>
+              <li><b>Compose</b>: Composer-0 chooses agents (summarize, outline, draft, polish).</li>
+              <li><b>Execute</b>: steps run with artifacts saved (sources, outline, drafts).</li>
+              <li><b>Schedule</b>: slot offered for review/edit based on your calendar.</li>
+              <li><b>Review</b>: quick feedback; final PDF/markdown shared with provenance.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* MODULE DETAILS (expandables) */}
+      <section id="details" className="section">
+        <div className="container">
+          <h2>Module details</h2>
+          <p className="lead">Precise roles and I/O so the system stays understandable.</p>
+          <div className="grid cols-2" style={{marginTop:18}}>
+            {[
+              {
+                t: "Preminer (intake & triage)",
+                d: "Single inbox for thoughts/notes/commands. Classifies (task, note, idea) and routes.",
+                io: [
+                  "Inputs: free text, voice, labels",
+                  "Outputs: tasks to plan, notes to 2nd Brain, pipeline requests to Composer-0"
+                ]
+              },
+              {
+                t: "2nd Brain (knowledge graph)",
+                d: "Living graph for People/Projects/Tasks/Notes/Sources with timeline + semantic search.",
+                io: [
+                  "Ops: add/merge entities, link relations, attach artifacts",
+                  "Retrieval: hybrid graph walk + dense search with citations"
+                ]
+              },
+              {
+                t: "Context Retriever",
+                d: "Fetches precise, permissioned context from 2nd Brain + calendar/files/web.",
+                io: [
+                  "Typed queries; freshness/quality scoring",
+                  "Returns snippets + citations; scope-aware"
+                ]
+              },
+              {
+                t: "Composer-0 (planner & orchestrator)",
+                d: "Turns intent into an agent pipeline with steps, deps, and acceptance criteria.",
+                io: [
+                  "Templates for research/content/code",
+                  "Chooses agents/tools; keeps it observable"
+                ]
+              },
+              {
+                t: "Task Processor",
+                d: "Executes steps, retries safely, logs everything, collects artifacts.",
+                io: [
+                  "Idempotent runner; event log",
+                  "Artifacts vault (files/links) with provenance"
+                ]
+              },
+              {
+                t: "Planning System",
+                d: "Suggests time slots respecting work hours, soft blocks, and energy profile.",
+                io: [
+                  "Models: WorkHours, TimeBlock, EnergyProfileEntry",
+                  "API: suggest_slots() → ranked windows"
+                ]
+              },
+              {
+                t: "Agent Layer / Marketplace",
+                d: "Pluggable micro-agents with typed I/O, ratings, budgets, and permissions.",
+                io: [
+                  "Clear scopes & resource caps",
+                  "Future: community agents with governance"
+                ]
+              }
+            ].map((m) => (
+              <details key={m.t} className="card accordion">
+                <summary><b>{m.t}</b></summary>
+                <p style={{margin:"8px 0 0", opacity:.85}}>{m.d}</p>
+                <ul style={{margin:"6px 0 0", paddingLeft:18, lineHeight:1.7, opacity:.85}}>
+                  {m.io.map((x) => <li key={x}>{x}</li>)}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ / PRIVACY */}
+      <section id="faq" className="section">
+        <div className="container">
+          <h2>FAQ & privacy</h2>
+          <div className="grid cols-2" style={{marginTop:18}}>
+            <details className="card accordion">
+              <summary><b>How is this different from a task manager?</b></summary>
+              <p>It composes agent pipelines from your intent and context, executes steps, and logs artifacts. Tasks are the by-product, not the product.</p>
+            </details>
+            <details className="card accordion">
+              <summary><b>Where does my data live?</b></summary>
+              <p>You explicitly connect sources. 2nd Brain keeps a permissioned memory graph with citations and an audit trail.</p>
+            </details>
+            <details className="card accordion">
+              <summary><b>Can I plug custom agents?</b></summary>
+              <p>Yes—an Agent API is planned for beta. Agents have typed I/O, scopes, and budgets.</p>
+            </details>
+            <details className="card accordion">
+              <summary><b>Can it schedule for me?</b></summary>
+              <p>The Planning System proposes slots that respect your work hours, soft blocks, and energy patterns.</p>
+            </details>
+            <details className="card accordion">
+              <summary><b>What do I get in the beta?</b></summary>
+              <p>Saved pipelines (research/content), artifact vault, calendar-aware execution, and early access to the Agent API.</p>
+            </details>
+            <details className="card accordion">
+              <summary><b>Pricing?</b></summary>
+              <p>Early beta is free for waitlist users. Paid tiers will reflect agent usage and collaboration features.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       {/* ROADMAP */}
       <section id="roadmap" className="section">
         <div className="container">
           <h2>Roadmap</h2>
-          <div className="grid cols-2" style={{ marginTop: 18 }}>
-            <div className="card">
-              <h3>MVP</h3>
-              <p>Landing + waitlist, basic task orchestration, 2nd Brain integration, calendar slots, artifact logging.</p>
-            </div>
-            <div className="card">
-              <h3>Beta</h3>
-              <p>Agent marketplace, personal profiles, improved retrieval, pipeline templates, private instances.</p>
-            </div>
-            <div className="card">
-              <h3>Public</h3>
-              <p>Open module ecosystem, DAO/economy for agent authors, SDK and docs.</p>
-            </div>
-            <div className="card">
-              <h3>Vision+</h3>
-              <p>Thinking OS: a personal task bus, multi-agent scenarios, a live knowledge graph, and self-learning.</p>
-            </div>
-          </div>
+          <RoadmapTimeline
+            items={[
+              { title: "MVP",    desc: "Landing + waitlist, basic task orchestration, 2nd Brain integration, calendar slots, artifact logging.", status: "done" },
+              { title: "Beta",   desc: "Agent marketplace, personal profiles, improved retrieval, pipeline templates, private instances.", status: "active" },
+              { title: "Public", desc: "Open module ecosystem, DAO/economy for agent authors, SDK and docs.", status: "next" },
+              { title: "Vision+",desc: "Thinking OS: personal task bus, multi-agent scenarios, live knowledge graph, self-learning.", status: "future" },
+            ]}
+            caption="Status colors — done: cyan, active: violet, next: gray, future: dim."
+          />
         </div>
       </section>
 
@@ -230,6 +358,7 @@ export default function Page() {
           <div>© {new Date().getFullYear()} Exocore.cx</div>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <Link href="/">Home</Link>
+            <a href="#deepdive">Deep dive</a>
             <Link href="/manifesto">Manifesto</Link>
             <Link href="/updates">Updates</Link>
             <Link href="/privacy">Privacy</Link>
