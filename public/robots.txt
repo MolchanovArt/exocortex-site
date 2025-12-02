@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://exocore.cx
+
+# Sitemaps
 Sitemap: https://exocore.cx/sitemap.xml
