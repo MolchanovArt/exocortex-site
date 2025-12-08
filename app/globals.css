@@ -87,7 +87,7 @@ input,button{font:inherit}
   background:#0f0f16; border:1px solid var(--border); color:var(--text);
   padding:12px 14px; border-radius:10px; width:100%
 }
-.form{display:flex; gap:12px; flex-wrap:wrap}
+.form{display:flex; gap:12px; flex-wrap:wrap; max-width:600px; margin:0 auto}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
 
 /* ===== Diagram (How it works) ===== */
@@ -102,7 +102,7 @@ input,button{font:inherit}
 
 /* ===== Roadmap timeline ===== */
 .timeline{ position:relative; margin-top:18px; }
-.timeline-list{ position:relative; display:grid; gap:18px; grid-template-columns:repeat(4,minmax(0,1fr)); }
+.timeline-list{ position:relative; display:grid; gap:18px; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; padding:0; margin:0; }
 .timeline-list::before{ content:""; position:absolute; left:0; right:0; top:24px; height:2px;
   background:linear-gradient(90deg, var(--border), #6a6aff); opacity:.35; pointer-events:none; }
 .timeline-item{ padding-top:36px; text-align:center; }

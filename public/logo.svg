@@ -1,1 +1,20 @@
-<svg height="256" viewBox="0 0 1024 256" width="1024" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h1024v256h-1024z" fill="#0b0b0e"/><circle cx="96" cy="128" fill="none" r="80" stroke="#7c7cff" stroke-width="4"/><g stroke-linecap="round"><path d="m56 88 80 80" stroke="#61dafb" stroke-width="6"/><path d="m56 168 80-80" stroke="#61dafb" stroke-width="6"/><path d="m36 100h50" stroke="#7c7cff" stroke-width="5"/><path d="m36 128h40" stroke="#7c7cff" stroke-width="5"/><path d="m36 156h50" stroke="#7c7cff" stroke-width="5"/></g><text fill="#e6e6f0" font-family="DejaVu Sans, Arial, sans-serif" font-size="54" x="200" y="120">Exocortex / Exocore</text><text fill="#a1a1ad" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" x="200" y="160">Personal AI Orchestrator</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="256" viewBox="0 0 1024 256">
+  <defs>
+    <style>
+      .t1 { font: 700 64px "DejaVu Sans", Arial, sans-serif; fill: #e6e6f0; }
+      .t2 { font: 400 26px "DejaVu Sans", Arial, sans-serif; fill: #aaAABE; }
+    </style>
+  </defs>
+  <!-- Transparent background -->
+  <rect width="1024" height="256" fill="none"/>
+  <!-- Monogram -->
+  <circle cx="96" cy="128" r="70" fill="none" stroke="#7c7cff" stroke-width="4"/>
+  <line x1="56" y1="88" x2="136" y2="168" stroke="#61dafb" stroke-width="6" stroke-linecap="round"/>
+  <line x1="56" y1="168" x2="136" y2="88" stroke="#61dafb" stroke-width="6" stroke-linecap="round"/>
+  <line x1="28" y1="94" x2="78" y2="94" stroke="#7c7cff" stroke-width="5" stroke-linecap="round"/>
+  <line x1="28" y1="128" x2="68" y2="128" stroke="#7c7cff" stroke-width="5" stroke-linecap="round"/>
+  <line x1="28" y1="162" x2="78" y2="162" stroke="#7c7cff" stroke-width="5" stroke-linecap="round"/>
+  <!-- Wordmark -->
+  <text x="200" y="110" class="t1">Exocortex</text>
+  <text x="200" y="152" class="t2">Personal AI Orchestrator</text>
+</svg>

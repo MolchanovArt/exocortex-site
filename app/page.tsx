@@ -315,10 +315,12 @@ export default function Page() {
       {/* JOIN */}
       <section id="join" className="section" style={{ paddingBottom: 72 }}>
         <div className="container">
-          <h2>Join the waitlist</h2>
-          <p className="lead">
-            Become an early user/builder — get invites, updates, and access to private builds.
-          </p>
+          <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center' }}>
+            <h2>Join the waitlist</h2>
+            <p className="lead">
+              Become an early user/builder — get invites, updates, and access to private builds.
+            </p>
+          </div>
           <form
             className="form"
             action={process.env.NEXT_PUBLIC_FORMSPREE || "https://formspree.io/f/your_form_id"}
@@ -345,7 +347,7 @@ export default function Page() {
             <input type="hidden" name="_redirect" value="https://exocore.cx/thanks" />
             <button className="btn" type="submit">Request access</button>
           </form>
-          <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 10 }}>
+          <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 10, textAlign: 'center' }}>
             Or email us at <a href="mailto:info@exocore.cx">info@exocore.cx</a>
           </p>
         </div>
