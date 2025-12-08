@@ -308,7 +308,6 @@ export default function Page() {
               { title: "Public", desc: "Open module ecosystem, DAO/economy for agent authors, SDK and docs.", status: "next" },
               { title: "Vision+",desc: "Thinking OS: personal task bus, multi-agent scenarios, live knowledge graph, self-learning.", status: "future" },
             ]}
-            caption="Status colors — done: cyan, active: violet, next: gray, future: dim."
           />
         </div>
       </section>
